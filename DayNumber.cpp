@@ -56,12 +56,11 @@ ULong DayNumber(ULong depth){
 	
 	dayNumber++;
 	distance += dayDistance;
-	if( distance < depth){
-		do{
-			distance -= nightDistance;
-			dayNumber++;
-			distance += dayDistance;
-		}while(depth>=distance);
+	
+	while(distance<depth){
+		distance -= nightDistance;
+		dayNumber++;
+		distance += dayDistance;
 	}
 	return dayNumber;
 }
