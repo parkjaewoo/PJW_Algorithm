@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
 
 ULong Input(){
 	ULong number ;
-	printf("\n\n\n\n\n\t\t만자리 이하의 수를 입력하십시오! ");
+	printf("\n\n\n\n\n\t\t수를 입력하십시오! ");
 	scanf("%d", &number);
 	return number;
 }
@@ -48,25 +48,23 @@ ULong Input(){
 출		력: 자릿수 합
 *************************************************************************/
 ULong PositionalNumber(ULong number){
-	ULong sumPositionNumber = 0;
-	ULong tenThousand = 0;
-	ULong thousand = 0;
-	ULong hundred = 0;
-	ULong ten = 0;
-	ULong remainder = 0;
+	ULong sumPositionalNumber = 0;
+	ULong position = 10;
+	ULong positionalValue = 0;
+	ULong remainder;
 
-	tenThousand = number / 10000;
-	remainder = number % 10000;
-	thousand = remainder / 1000;
-	remainder = remainder % 1000;
-	hundred = remainder / 100;
-	remainder = remainder %100;
-	ten = remainder / 10;
-	remainder = remainder % 10;
-
-	sumPositionNumber = tenThousand + thousand + hundred + ten + remainder;
-	return sumPositionNumber;
-
+	//positionalValue = number - (number/position)* position;
+	//positionalValue = number % position;
+	//sumPositionalNumber += positionalValue;
+	remainder = number;
+	while(remainder != 0){
+		//position *= 10;
+		//positionalValue = (number - (number/position)*position)/(position/10);
+		positionalValue = remainder % position;
+		sumPositionalNumber += positionalValue;
+		remainder /= 10;
+	}
+	return sumPositionalNumber;
 }
 
 
@@ -79,6 +77,5 @@ ULong PositionalNumber(ULong number){
 
 void Output(ULong number, ULong sumPositionNumber){
 	printf("\t\t=====================================================\n");
-	printf("\t\t\t %d의 각 자리수 합은 %d 입니다 ", number, sumPositionNumber);
-	
+	printf("\t\t\t %d의 각 자리수 합은 %d 입니다 ", number, sumPositionNumber);	
 }
