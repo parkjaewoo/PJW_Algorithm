@@ -33,23 +33,16 @@ int main(int argc, char *argv[]){
 *************************************************************************/
 ULong sevenCount(){
 	ULong count = 0;
-	ULong one = 0;
-	ULong ten = 0;
-	ULong hundred = 0;
-	ULong thousand = 0;
+	ULong remainder;
+	ULong positionValue = 0;
 
-	for(int i = 0; i < 10000; i++){
-		//one = i - (i/10)*10;
-		one = i % 10;
-		//ten = (i/10) - ((i/10)/10)*10;
-		ten = (i%100)/10 ;
-		//hundred = (i/100) - ((i/100)/10)*10;
-		hundred = (i%1000)/100;
-		thousand = i/1000;
-		if(one==7) count++;
-		if(ten == 7) count++;
-		if(hundred == 7) count++;
-		if(thousand == 7) count++;
+	for(int i = 1; i < 10000; i++){
+		remainder = i;
+		while(remainder > 0){
+			positionValue = remainder - (remainder/10)*10;
+			if(positionValue == 7) count++;
+			remainder /= 10;
+		}
 	}
 	return count;
 }
@@ -57,7 +50,7 @@ ULong sevenCount(){
 
 /*************************************************************************
 파일  명칭: Output
-기		능: 모니터에 를 출력한다.
+기		능: 모니터에 개수를 출력한다.
 입		력: 개수
 출		력: 없음.
 **************************************************************************/
