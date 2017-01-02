@@ -51,30 +51,14 @@ ULong ReverseNumber(ULong number){
 	ULong reverseNumber = 0;
 	ULong positionValue = 0;
 	ULong remainder;
-	ULong i =0 ;
-	ULong j = 0;
-	ULong position = 1;
-
+	
 	remainder = number;
-	while(number>9){
-		number /=10;
-		position+=1;
-	}
-	//positionValue = remainder - (remainder /10)*10;
-	positionValue = remainder%10;
-	i = position;
-	while(i>0){
-		j = i;
-		while(j > 1){
-			positionValue *= 10;
-			j -= 1;
-		}
-		reverseNumber += positionValue;
+	while(remainder>9){
+		positionValue = remainder -(remainder / 10) * 10;
+		reverseNumber = (reverseNumber + positionValue) * 10;
 		remainder /= 10;
-		//positionValue = remainder - (remainder/10)*10;
-		positionValue = remainder%10;
-		i -= 1;
 	}
+	reverseNumber += remainder;
 	return reverseNumber;
 }
 
