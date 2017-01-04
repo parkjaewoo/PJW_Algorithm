@@ -53,12 +53,11 @@ ULong ReverseNumber(ULong number){
 	ULong remainder;
 	
 	remainder = number;
-	while(remainder>9){
+	while(remainder>0){
 		positionValue = remainder -(remainder / 10) * 10;
-		reverseNumber = (reverseNumber + positionValue) * 10;
+		reverseNumber = (reverseNumber*10) + positionValue;
 		remainder /= 10;
 	}
-	reverseNumber += remainder;
 	return reverseNumber;
 }
 
