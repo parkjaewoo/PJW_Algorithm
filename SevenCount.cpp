@@ -33,15 +33,16 @@ int main(int argc, char *argv[]){
 *************************************************************************/
 ULong sevenCount(){
 	ULong count = 0;
-	ULong remainder;
+	ULong portion;
 	ULong positionValue = 0;
 
-	for(int i = 1; i < 10000; i++){
-		remainder = i;
-		while(remainder > 0){
-			positionValue = remainder - (remainder/10)*10;
-			if(positionValue == 7) count++;
-			remainder /= 10;
+	for(int i = 1; i <= 10000; i++){
+		portion = i;
+		while(portion > 0){
+			//positionValue = portion - (portion /10)*10;
+			positionValue = portion % 10;
+			if(positionValue == 7) {count++;}
+			portion /= 10;
 		}
 	}
 	return count;
